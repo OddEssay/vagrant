@@ -1,8 +1,6 @@
 import "rvm"
-import "apache"
 include rvm::system
 
-    include apache
     
 class lucid32
 {
@@ -18,9 +16,6 @@ class lucid32
 	service { "apache2":
 		ensure => running,
 		require => Package["apache2"],
-	}
-	apache::vhost { 'localhost':
-	    docroot => '/vagrant',
 	}
 	if ! defined( Package["git-core"] )				{ package { "git-core": ensure => present, } }
 	if ! defined( Package["php-apc"] )				{ package { "php-apc": ensure => present, } }
