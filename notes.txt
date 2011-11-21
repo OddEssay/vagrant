@@ -1,0 +1,60 @@
+Development Enviroment Bootstrap Automation with Vagrant and Puppet
+
+1/ What is Vagrant?
+	-> Automates the roll out of virtual machines
+	-> You'll need: Ruby and Virtual Box installed
+
+2/ What is puppet?
+	-> Automates set up of a system
+	-> You could also use chef
+
+3/ What is RVM?
+	-> Controls multiple versions of ruby on a system
+	-> Good example as it doesn't use packaged files
+
+4/ Why?
+	-> Everyone works from identical, not nearly identical setups.
+		* Be certain that everything you need is installed
+		* Be certain that nothing unexpected is installed that could introduce unexpected side effects
+	-> Keep multiple projects in clean enviroments
+
+5/ My RVM Problem
+	* RVM installs ruby successfully even if some optional requirements aren't on your system, but some gems might not install correctly.
+
+
+// Example
+
+a/ select a base
+b/ vagrant up (Go make get some coffee)
+c/ set up puppet manifest
+d/ vagrant reload
+e/ work!
+	-> vagrant ssh
+	or ssh to localhost:8080
+	or work locally
+f/ destory
+g/ do it again!
+
+// Vagrant Can:
+	-> Setup IP Addresses
+	-> Port forward from host to virtual machine
+	-> Control multiple systems in one go - eg, a web server and database server
+
+
+// Puppet Can:
+	-> Install system packages (eg, apt-get ) - Or make sure they aren't installed
+	-> Execute commands (eg, "apt-get update") - Can be based on conditions
+	-> Create files and directories - and set their permissions
+	-> create users and groups - and modify them
+	-> ensure services are running - or stopped
+	-> Create reusable modules and classes to bundle instructions and templates
+	-> Sync to a "puppet master" server ! Not Covered - Adds a layer of complixity I don't want 
+
+g (Or else!)
+
+// Links
+http://vagrantup.com
+http://puppetlabs.com
+http://rvm...
+http://github.com/MojoProjects
+http://twitter.com/OddEssay
