@@ -1,13 +1,23 @@
+stage {"pre": before => Stage["main"]}
+
+class initbasic
+{
+	exec { "apt-get_update":
+		path => ["/usr/bin/","/usr/sbin/","/bin"],
+		command => "apt-get update",
+	}
+
+}
+# Rather then use include, this loads the class and notifies which stage to run at.
+class {"initbasic": stage=>"pre"}
+
+
 import "rvm"
 include rvm::system
 
     
 class lucid32
 {
-	exec { "apt-get_update":
-		path => ["/usr/bin/","/usr/sbin/","/bin"],
-		command => "apt-get update",
-	}
 
  	if ! defined( Package["zlib1g"] )				{ package { "zlib1g": ensure => present, } }
 	if ! defined( Package["zlib1g-dev"] )			{ package { "zlib1g-dev": ensure => present, } }
