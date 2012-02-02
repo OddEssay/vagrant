@@ -1,5 +1,5 @@
 stage {"pre": before => Stage["main"]}
-
+stage { 'rvm-install': before => Stage['main'] }
 class initbasic
 {
 	exec { "apt-get_update":
@@ -10,7 +10,6 @@ class initbasic
 }
 # Rather then use include, this loads the class and notifies which stage to run at.
 class {"initbasic": stage=>"pre"}
-
 
 import "rvm"
 include rvm::system
@@ -57,11 +56,12 @@ class lucid32
 	user { "vagrant": }
 	rvm::system_user { vagrant: ; }
 	if $rvm_installed == "true" {
-		rvm_system_ruby { 'ruby-1.9.2-p290':
+	    rvm_system_ruby { 'ruby-1.9.2-p290':
 			ensure => 'present',
 			default_use => true;
 		}
 	}
+	
 }
 
 include lucid32
