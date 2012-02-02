@@ -11,9 +11,9 @@ Vagrant::Config.run do |config|
 
   # config.vm.network "33.33.33.10"
 
-  config.vm.forward_port "http", 80, 4568 
+  config.vm.forward_port 80, 4568 
 
-  # config.vm.share_folder "v-data", "/vagrant_data", "../data"
+  config.vm.share_folder "www", "/www", "../www"
 
    config.vm.provision :puppet do |puppet|
      puppet.manifests_path = "manifests"

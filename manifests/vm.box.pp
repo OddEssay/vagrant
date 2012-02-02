@@ -60,8 +60,13 @@ class lucid32
 			ensure => 'present',
 			default_use => true;
 		}
-	}
-	
+}	
+	file { 'default':
+        path    => '/etc/apache2/sites-available/default',
+        ensure  => file,
+        require => Package['apache2'],
+        source  => "/tmp/vagrant-puppet/manifests/template/default.erb",
+      }
 }
 
 include lucid32
